@@ -1,0 +1,27 @@
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Disable default site
+  file:
+    name: /etc/nginx/sites-enabled/default
+    state: absent
+  notify:
+    - restart_nginx
+
+- name: Configure jitsi-meet site
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/{{ jitsi_meet_domain }}.conf
+  notify:
+    - restart_nginx
+
+- name: Enable jitsi-meet site
+  file:
+    src: /etc/nginx/sites-available/{{ jitsi_meet_domain }}.conf
+    dest: /etc/nginx/sites-enabled/{{ jitsi_meet_domain }}
+    state: link
+  notify:
+    - restart_nginx

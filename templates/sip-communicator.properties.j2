@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+
+org.jitsi.videobridge.AUTHORIZED_SOURCE_REGEXP=focus@auth.{{ jitsi_meet_domain }}/.*
+org.jitsi.videobridge.TCP_HARVESTER_PORT={{ jitsi_meet_tcp_harvester_port }}
+
+# using localhost seems to fix issues with UDP binding
+org.jitsi.videobridge.rest.jetty.host=localhost
+
+# NAT configuration
+org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS={{ jitsi_meet_local_ip | default('localhost', true) }}
+org.ice4j.ice.harvest.NAT_HARVESTER_PUBLIC_ADDRESS={{ jitsi_meet_public_ip | default('localhost', true) }}

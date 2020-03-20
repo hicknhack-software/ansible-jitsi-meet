@@ -1,0 +1,6 @@
+jitsi_meet_domain: localhost
+jitsi_meet_tcp_harvester_port: 4443
+jitsi_meet_upd_harvester_port: 10000
+jitsi_meet_local_ip: localhost
+jitsi_meet_public_ip: localhost
+

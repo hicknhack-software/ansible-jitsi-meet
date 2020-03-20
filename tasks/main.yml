@@ -1,0 +1,5 @@
+- name: Install and configure jitsi
+  import_tasks: jitsi-meet.yml
+
+- name: Install and configure nginx
+  import_tasks: nginx.yml
